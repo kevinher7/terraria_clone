@@ -17,6 +17,7 @@ set(SOURCE_FILES
         "src/TextureManager.cpp"
         "src/Vector2D.cpp"
         # "src/Collision.cpp"
+        "src/Player/PlayerManager.cpp"
         )
         
 add_executable(terraria_clone ${SOURCE_FILES})
