@@ -1,13 +1,18 @@
 #include "Game.h"
 #include "ECS/Components.h"
 #include "player/PlayerManager.h"
+#include "blocks/BlocksManager.h"
 #include <iostream>
+#include <vector>
 
 SDL_Event Game::gameEvent{};
 Manager Game::gameManager{};
+std::vector<Entity *> Game::blocks;
 
 Entity &player{Game::gameManager.addEntity()};
 PlayerManager playerManager{};
+
+BlockManager blockManager{};
 
 Game::Game(const char *windowTitle, int width, int height)
     : windowWidth{width}, windowHeight{height}, m_gameWindow{nullptr}, m_isRunning{false}
@@ -32,6 +37,7 @@ Game::Game(const char *windowTitle, int width, int height)
 void Game::init()
 {
     playerManager.init(player, windowWidth / 2, windowHeight / 2);
+    blockManager.placeLine(0, windowHeight / 2 - 10 + 32, 2, 50);
 }
 
 void Game::handleEvents()

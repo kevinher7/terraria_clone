@@ -1,8 +1,11 @@
 #ifndef GAME_H
 #define GAME_H
 #include <SDL3/SDL.h>
+#include <vector>
 
+class Entity;
 class Manager;
+class BlockComponent;
 
 class Game
 {
@@ -22,6 +25,7 @@ public:
     inline static SDL_Renderer *gameRenderer{nullptr};
     static SDL_Event gameEvent;
     static Manager gameManager;
+    static std::vector<Entity *> blocks;
 
 private:
     SDL_Window *m_gameWindow;
