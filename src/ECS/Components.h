@@ -6,6 +6,8 @@
 #include "SpriteComponent.h"
 #include "BlockComponent.h"
 #include "KeyboardController.h"
-// #include "ColliderComponent.h"
+#include "ColliderComponent.h"
+#include "GravityComponent.h"
+#include "MovementComponents/JumpComponent.h"
 
 #endif

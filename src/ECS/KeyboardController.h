@@ -2,6 +2,7 @@
 #define KEYBOARDCONTROLLER_H
 
 #include "TransformComponent.h"
+#include "./MovementComponents/JumpComponent.h"
 #include "../Game.h"
 
 class KeyboardController : public Component
@@ -26,13 +27,14 @@ public:
             switch (Game::gameEvent.key.keysym.sym)
             {
             case SDLK_w:
-                transform->velocity.y = -1.0f;
+                entity->getComponent<JumpComponent>().startedJump = true;
+                entity->getComponent<JumpComponent>().update();
                 break;
             case SDLK_a:
                 transform->velocity.x = -1.0f;
                 break;
             case SDLK_s:
-                transform->velocity.y = 1.0f;
+                // transform->velocity.y = 1.0f;
                 break;
             case SDLK_d:
                 transform->velocity.x = 1.0f;
@@ -48,13 +50,13 @@ public:
             switch (Game::gameEvent.key.keysym.sym)
             {
             case SDLK_w:
-                transform->velocity.y = 0;
+                // transform->velocity.y = 0;
                 break;
             case SDLK_a:
                 transform->velocity.x = 0;
                 break;
             case SDLK_s:
-                transform->velocity.y = 0;
+                // transform->velocity.y = 0;
                 break;
             case SDLK_d:
                 transform->velocity.x = 0;

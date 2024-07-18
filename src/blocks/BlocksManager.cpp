@@ -1,6 +1,8 @@
 #include "BlocksManager.h"
 #include "../ECS/Components.h"
 
+std::vector<ColliderComponent *> BlockManager::blockColliders{};
+
 void BlockManager::placeLine(int xinit, int yinit, int id, int numBlocks)
 {
     for (int b{0}; b < numBlocks; b++)

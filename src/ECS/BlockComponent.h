@@ -1,6 +1,8 @@
 #include "ECS.h"
 #include "TransformComponent.h"
 #include "SpriteComponent.h"
+#include "ColliderComponent.h"
+#include "../blocks/BlocksManager.h"
 #include "../Game.h"
 #include <SDL3/SDL.h>
 #include <string>
@@ -9,7 +11,7 @@ class BlockComponent : public Component
 {
 public:
     BlockComponent(int xpos, int ypos, int id)
-        : transform{nullptr}, sprite{nullptr}, blockRect{static_cast<float>(xpos), static_cast<float>(ypos), 20.0f, 20.0f}, blockID{id}, spritePath{}
+        : transform{nullptr}, sprite{nullptr}, collider{nullptr}, blockRect{static_cast<float>(xpos), static_cast<float>(ypos), 20.0f, 20.0f}, blockID{id}, spritePath{}
     {
         switch (blockID)
         {
@@ -34,10 +36,18 @@ public:
 
         entity->addComponent<SpriteComponent>(spritePath.c_str());
         sprite = &entity->getComponent<SpriteComponent>();
+
+        entity->addComponent<ColliderComponent>(spritePath);
+        collider = &entity->getComponent<ColliderComponent>();
+
+        collider->isBlock = true;
+
+        BlockManager::blockColliders.push_back(collider);
     }
 
     TransformComponent *transform;
     SpriteComponent *sprite;
+    ColliderComponent *collider;
 
     SDL_FRect blockRect;
     int blockID;

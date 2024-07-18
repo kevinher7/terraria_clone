@@ -10,7 +10,7 @@ Manager Game::gameManager{};
 std::vector<Entity *> Game::blocks;
 
 Entity &player{Game::gameManager.addEntity()};
-PlayerManager playerManager{};
+PlayerManager playerManager{player};
 
 BlockManager blockManager{};
 
@@ -36,7 +36,7 @@ Game::Game(const char *windowTitle, int width, int height)
 
 void Game::init()
 {
-    playerManager.init(player, windowWidth / 2, windowHeight / 2);
+    playerManager.init(windowWidth / 2, windowHeight / 2);
     blockManager.placeLine(0, windowHeight / 2 - 10 + 32, 2, 50);
 }
 
@@ -58,6 +58,7 @@ void Game::update()
 {
     Game::gameManager.refresh();
     Game::gameManager.update();
+    std::cout << playerManager.transform->velocity << "\n";
 }
 void Game::render()
 {

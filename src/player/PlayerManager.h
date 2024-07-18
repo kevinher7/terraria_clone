@@ -1,10 +1,24 @@
-class Entity;
+#ifndef PLAYERMANAGER_H
+#define PLAYERMANAGER_H
+
+#include "../ECS/ECS.h"
+
+class TransformComponent;
 
 class PlayerManager
 {
 public:
-    PlayerManager() = default;
+    PlayerManager(Entity &playerEntity)
+        : player{playerEntity} {}
     ~PlayerManager() = default;
 
-    void init(Entity &playerEntity, int xpos, int ypos);
+    void init(int xpos, int ypos);
+
+    // bool detectBlockCollision();
+    // void handleBlockCollision();
+
+    Entity &player;
+    static TransformComponent *transform;
 };
+
+#endif

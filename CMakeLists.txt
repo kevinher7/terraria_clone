@@ -16,7 +16,7 @@ set(SOURCE_FILES
         "src/Game.cpp"
         "src/TextureManager.cpp"
         "src/Vector2D.cpp"
-        # "src/Collision.cpp"
+        "src/Collision.cpp"
         "src/player/PlayerManager.cpp"
         "src/blocks/BlocksManager.cpp"
         )
