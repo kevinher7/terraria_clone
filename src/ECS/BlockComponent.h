@@ -1,10 +1,12 @@
+#ifndef BLOCKCOMPONENT_H
+#define BLOCKCOMPONENT_H
+
 #include "ECS.h"
 #include "TransformComponent.h"
 #include "SpriteComponent.h"
 #include "ColliderComponent.h"
 #include "../blocks/BlocksManager.h"
 #include "../Game.h"
-#include <SDL3/SDL.h>
 #include <string>
 
 class BlockComponent : public Component
@@ -61,3 +63,5 @@ private:
     BlockComponent &operator=(BlockComponent &&) = delete;
     ~BlockComponent() = default;
 };
+
+#endif

@@ -3,12 +3,9 @@
 
 #include "ECS.h"
 #include "TransformComponent.h"
-#include "../Game.h"
-#include "../Collision.h"
-#include "../blocks/BlocksManager.h"
 #include "./MovementComponents/JumpComponent.h"
-#include <SDL3/SDL.h>
-#include <iostream>
+#include "../Collision.h"
+#include "../Game.h"
 
 class ColliderComponent : public Component
 {
@@ -16,11 +13,6 @@ public:
     ColliderComponent() = delete;
     ColliderComponent(std::string name)
         : transform{nullptr}, colliderBox{0.0f, 0.0f, 0.0f, 0.0f}, tagName{name}, isBlock{false} {}
-    ColliderComponent(const ColliderComponent &) = delete;
-    ColliderComponent &operator=(const ColliderComponent &) = delete;
-    ColliderComponent(ColliderComponent &&) = delete;
-    ColliderComponent &operator=(ColliderComponent &&) = delete;
-    ~ColliderComponent() = default;
 
     void init() override
     {
@@ -45,8 +37,6 @@ public:
         if (!isBlock)
         {
             Collision::detectOnGround(*this, *transform);
-
-            // std::cout << colliderBox.x << ", " << colliderBox.y << "\n";
         }
     }
 
@@ -54,6 +44,13 @@ public:
     SDL_FRect colliderBox;
     std::string tagName;
     bool isBlock;
+
+private:
+    ColliderComponent(const ColliderComponent &) = delete;
+    ColliderComponent &operator=(const ColliderComponent &) = delete;
+    ColliderComponent(ColliderComponent &&) = delete;
+    ColliderComponent &operator=(ColliderComponent &&) = delete;
+    ~ColliderComponent() = default;
 };
 
 #endif

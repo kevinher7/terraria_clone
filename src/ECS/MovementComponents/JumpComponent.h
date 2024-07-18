@@ -4,9 +4,9 @@
 #include "../ECS.h"
 #include "../TransformComponent.h"
 #include "../ColliderComponent.h"
-#include "../../blocks/BlocksManager.h"
-#include "../../Collision.h"
 #include <iostream>
+
+class ColliderComponent;
 
 class JumpComponent : public Component
 {

@@ -1,7 +1,7 @@
 #include "Collision.h"
 #include "ECS/ColliderComponent.h"
 #include "ECS/TransformComponent.h"
-#include <iostream>
+#include "blocks/BlocksManager.h"
 
 bool Collision::AABB(const SDL_FRect &rectA, const SDL_FRect &rectB)
 {
@@ -20,7 +20,6 @@ bool Collision::AABB(const ColliderComponent &colliderA, const ColliderComponent
 {
     if (AABB(colliderA.colliderBox, colliderB.colliderBox))
     {
-        // std::cout << colliderA.tagName << " hit: " << colliderB.tagName << "\n";
         return true;
     }
 
@@ -33,11 +32,6 @@ bool Collision::detectOnGround(ColliderComponent &entityCollider, TransformCompo
     {
         if (Collision::AABB(entityCollider, *blockCollider))
         {
-            if (!entityCollider.isBlock)
-            {
-                std::cout << "Detected Block Collision\n";
-            }
-
             transform.onGround = true;
 
             transform.velocity.y = 0;
@@ -45,9 +39,9 @@ bool Collision::detectOnGround(ColliderComponent &entityCollider, TransformCompo
 
             return true;
         }
-    }
 
-    transform.onGround = false;
+        transform.onGround = false;
+    }
 
     return false;
 }

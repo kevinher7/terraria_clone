@@ -3,8 +3,6 @@
 
 #include "../ECS/ECS.h"
 
-class TransformComponent;
-
 class PlayerManager
 {
 public:
@@ -14,11 +12,7 @@ public:
 
     void init(int xpos, int ypos);
 
-    // bool detectBlockCollision();
-    // void handleBlockCollision();
-
     Entity &player;
-    static TransformComponent *transform;
 };
 
 #endif

@@ -9,9 +9,9 @@ class SpriteComponent : public Component
 {
 public: // Trying with make_unique (could fail) : It didn't fail :It failed xd
     SpriteComponent()
-        : m_transform{nullptr}, m_texture{nullptr}, m_srcRec{0.0f, 0.0f, 64.0f, 64.0f}, m_destRec{0.0f, 0.0f, 64.0f, 64.0f} {}
+        : m_transform{nullptr}, m_texture{nullptr}, m_srcRec{0.0f, 0.0f, 40.0f, 40.0f}, m_destRec{0.0f, 0.0f, 40.0f, 40.0f} {}
     SpriteComponent(const char *spritePath)
-        : m_transform{nullptr}, m_texture{nullptr}, m_srcRec{0.0f, 0.0f, 64.0f, 64.0f}, m_destRec{0.0f, 0.0f, 64.0f, 64.0f}
+        : m_transform{nullptr}, m_texture{nullptr}, m_srcRec{0.0f, 0.0f, 40.0f, 40.0f}, m_destRec{0.0f, 0.0f, 40.0f, 40.0f}
     {
         setTexture(spritePath);
     }

@@ -2,16 +2,15 @@
 #include "ECS/Components.h"
 #include "player/PlayerManager.h"
 #include "blocks/BlocksManager.h"
-#include <iostream>
 #include <vector>
 
 SDL_Event Game::gameEvent{};
 Manager Game::gameManager{};
-std::vector<Entity *> Game::blocks;
 
 Entity &player{Game::gameManager.addEntity()};
 PlayerManager playerManager{player};
 
+std::vector<Entity *> Game::blocks;
 BlockManager blockManager{};
 
 Game::Game(const char *windowTitle, int width, int height)
@@ -27,10 +26,6 @@ Game::Game(const char *windowTitle, int width, int height)
 
         SDL_SetRenderDrawColor(gameRenderer, 0, 0, 0, 1);
         m_isRunning = true;
-    }
-    else
-    {
-        std::cerr << "Subsystems Initialization Failed\n";
     }
 }
 
@@ -58,7 +53,6 @@ void Game::update()
 {
     Game::gameManager.refresh();
     Game::gameManager.update();
-    std::cout << playerManager.transform->velocity << "\n";
 }
 void Game::render()
 {

@@ -1,6 +1,7 @@
 #ifndef KEYBOARDCONTROLLER_H
 #define KEYBOARDCONTROLLER_H
 
+#include "ECS.h"
 #include "TransformComponent.h"
 #include "./MovementComponents/JumpComponent.h"
 #include "../Game.h"
@@ -9,11 +10,6 @@ class KeyboardController : public Component
 {
 public:
     KeyboardController() : transform{nullptr} {}
-    KeyboardController(const KeyboardController &) = delete;
-    KeyboardController &operator=(const KeyboardController &) = delete;
-    KeyboardController(KeyboardController &&) = delete;
-    KeyboardController &operator=(KeyboardController &&) = delete;
-    ~KeyboardController() = default;
 
     void init() override
     {
@@ -28,7 +24,6 @@ public:
             {
             case SDLK_w:
                 entity->getComponent<JumpComponent>().startedJump = true;
-                entity->getComponent<JumpComponent>().update();
                 break;
             case SDLK_a:
                 transform->velocity.x = -1.0f;
@@ -69,6 +64,13 @@ public:
     }
 
     TransformComponent *transform;
+
+private:
+    KeyboardController(const KeyboardController &) = delete;
+    KeyboardController &operator=(const KeyboardController &) = delete;
+    KeyboardController(KeyboardController &&) = delete;
+    KeyboardController &operator=(KeyboardController &&) = delete;
+    ~KeyboardController() = default;
 };
 
 #endif
